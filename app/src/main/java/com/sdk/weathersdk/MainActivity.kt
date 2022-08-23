@@ -11,28 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        WeatherAPIController.getInstance(applicationContext).getCurrentWeather("12","12.99",object :IWeatherCallback{
-            override fun onWeatherDataReceived(model: WeatherModel) {
 
-            }
-
-            override fun onError(msg: String) {
-
-            }
-
-        })
-
-
-        WeatherAPIController.getInstance(applicationContext).getForecast("12","12.99","10",object :IWeatherCallback{
-            override fun onWeatherDataReceived(model: WeatherModel) {
-
-            }
-
-            override fun onError(msg: String) {
-
-            }
-
-        })
 
 
 
