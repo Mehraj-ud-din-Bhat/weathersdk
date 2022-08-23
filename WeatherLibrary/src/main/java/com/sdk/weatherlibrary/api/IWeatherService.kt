@@ -10,9 +10,9 @@ interface  IWeatherService {
 
     @GET("data/2.5/weather?")
     fun getCurrentWeather(@Query("lat") lat: String, @Query("lon") lon: String, @Query("APPID") app_id: String): Call<WeatherModel>
-    @GET("data/2.5/forecast/hourly?")
-    fun getHourlyForecastFourDays(@Query("lat") lat: String, @Query("lon") lon: String, @Query("appid") app_id: String): Call<WeatherModel>
-    @GET("data/2.5/forecast/daily?")
-    fun getDailyForecastSixteenDays(@Query("lat") lat: String, @Query("lon") lon: String, @Query("appid") app_id: String): Call<WeatherModel>
+    @GET("data/2.5/weather?")
+    fun getWeatherForecast(@Query("lat") lat: String, @Query("lon") lon: String,@Query("cnt") cnt:String, @Query("APPID") app_id: String): Call<WeatherModel>
+
+
 }
 

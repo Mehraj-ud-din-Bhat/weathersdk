@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class WeatherAPIController(val context: Context){
+public  class WeatherAPIController(val context: Context){
 
     companion object {
      private   var instance:WeatherAPIController?=null
@@ -50,8 +50,8 @@ class WeatherAPIController(val context: Context){
 
 
 
-  fun getForecastHourlyFourDays(lat:String, long:String,callBack: IWeatherCallback){
-      val call = RetrofitClient.IWeather.getHourlyForecastFourDays(lat,long,Urls.API_KEY)
+  fun getForecast(lat:String, long:String,days:String,callBack: IWeatherCallback){
+      val call = RetrofitClient.IWeather.getWeatherForecast(lat,long,days,Urls.API_KEY)
 
       call.enqueue(object: Callback<WeatherModel>{
           override fun onResponse(call: Call<WeatherModel>, response: Response<WeatherModel>) {
@@ -72,26 +72,6 @@ class WeatherAPIController(val context: Context){
   }
 
 
-    fun getForecastDailySixteenDays(lat:String, long:String,callBack: IWeatherCallback){
-        val call = RetrofitClient.IWeather.getDailyForecastSixteenDays(lat,long,Urls.API_KEY)
-
-        call.enqueue(object: Callback<WeatherModel>{
-            override fun onResponse(call: Call<WeatherModel>, response: Response<WeatherModel>) {
-                if(response.isSuccessful && response.code()==200)
-                {
-                    callBack.onWeatherDataReceived(response.body()!!)
-
-                }else{
-                    callBack.onError(response.message()!!)
-                }
-
-            }
-
-            override fun onFailure(call: Call<WeatherModel>, t: Throwable) {
-                callBack.onError(t.message!!)
-            }
-        })
-    }
 
 
 }
